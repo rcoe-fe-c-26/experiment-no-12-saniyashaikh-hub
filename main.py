@@ -1,19 +1,28 @@
-# AIM: Develop a Python program that reads a text file and 
-# prints words of specified lengths (e.g., three, four, 
+# AIM: Develop a Python program that reads a text file and
+# prints words of specified lengths (e.g., three, four,
 # five, etc.) found within the file.
-# Coder:Saniya Shaikh 
-# Date:13/02/26
+
+# Coders: Saniya Shaikh 
+# Date:13-02-2026
 
 print("--- Extracting Words from Text File ---\n")
 
-length = int(input())
-
 with open("story.txt", "r") as file:
-    text = file.read()
+    content = file.read()
 
-words = text.split()
+words = content.split()
 
-result = sorted(set(w.lower() for w in words if len(w) == length))
+length = int(input("Enter Length of words: "))
 
-print(f"Words with length {length} are: {result}")
+unique_words = set()
+
+for word in words:
+    word = word.lower()
+
+    if len(word) == length:
+        unique_words.add(word)
+
+result = sorted(unique_words)
+
+print("Words with length", length, "are:", result)
 
